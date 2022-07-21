@@ -1,2 +1,6 @@
 Requirements:
     SQL(sqlite3): Required for saving data to database
+
+Tkinter Notes:
+    Creates window using tkinter.Tk() -> variable
+    variable
