@@ -1,0 +1,2 @@
+Requirements:
+    SQL(sqlite3): Required for saving data to database
