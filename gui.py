@@ -4,7 +4,7 @@ btn = tk.Button
 label = tk.Label
 entry = tk.Entry
 text = tk.Text
-
+listbx=tk.Listbox
 
 class app(tk.Tk):
     def __init__(self, *args, **kwargs):
