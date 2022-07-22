@@ -4,3 +4,22 @@ Requirements:
 Tkinter Notes:
     Creates window using tkinter.Tk() -> variable
     variable
+
+
+class app:
+    def __init__(self,title:str,size:str="500x500",resizable:tuple=(True,True)):
+        if len(resizable)>2: raise Exception("Resizable must be 2 integers") #Error handling for resizable method
+        self.window=tk.Tk()
+        self.window.title(title)
+        self.window.geometry(size)
+        self.window.resizable(resizable[0],resizable[1])
+        self.sql=sqlfile("db.db")
+
+    def addStudentInfo(self,StudentName:str,Grade:int,NumberOfClasses:int,ClassGrades:dict):
+
+    def getStudentInfo(self,StudentName:str):
+
+
+
+
+    def run(self):self.window.mainloop()
