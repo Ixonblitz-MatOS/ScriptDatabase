@@ -4,6 +4,8 @@ import tkinter as tk
 #end
 #int float str bytes bytearray tuple list(array) dict
 #pass does nothing
+#INSERT INTO table_name (column1, column2, column3, ...)
+#VALUES (value1, value2, value3, ...);
 class sqlfile:
     def __init__(self,sqlFile:str):
         self.file=sqlite3.connect(sqlFile)
@@ -18,13 +20,22 @@ class sqlfile:
         for i in string.split(";"):
             finaldict[i.split(":")[0]]=i.split(":")[1]
         return finaldict
-    def addInfo(self):
-        self.cursor.execute("CREATE TABLE STUDENTS (name TEXT, grade int,NumberofClasses int,ClassGrades TEXT)")
-
+    def addStudentInfo(self, StudentName: str, Grade: int, NumberOfClasses: int, ClassGrades: dict): self.addInfo(
+        StudentName, Grade, NumberOfClasses, ClassGrades)
+    def getStudentInfo(self,StudentName:str):
+        sqlite_select_query = f"""SELECT * from STUDENTS WHERE name='{StudentName}'"""
+        self.cursor.execute(sqlite_select_query)
+        records = self.cursor.fetchall()
+        for rows in records:
+            return rows[0], rows[1], rows[2], rows[3]
+    def addInfo(self,StudentName:str,Grade:int,NumberOfClasses:int,ClassGrades:dict):
+        self.cursor.execute(f"INSERT INTO STUDENTS (name, grade,NumberofClasses,ClassGrades);VALUES ({StudentName},{Grade},{NumberOfClasses},{self.dictToString(ClassGrades)});")
+    def __del__(self):self.cursor.close()
+    def __delete__(self, instance):self.cursor.close()
 class commandLineApp:
     def __init__(self):
         self.sql=sqlfile("db.db")
-    def addStudentInfo(self,StudentName:str,Grade:int,NumberOfClasses:int,ClassGrades:dict):
+    def addStudentInfo(self,StudentName:str,Grade:int,NumberOfClasses:int,ClassGrades:dict):pass
 
     def getStudentInfo(self):
         Studentname=input("What is your name?")

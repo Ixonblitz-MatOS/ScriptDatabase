@@ -1,5 +1,8 @@
 import tkinter as tk
 import re
+
+class array(list):pass
+
 class char:
     def __init__(self,character=""[0]):
         if len(character)!=1:raise Exception("Characters must be 1 char long")
@@ -32,7 +35,9 @@ class chararray:
             if len(i)!=1:raise Exception(f"The list has more than one char in element {chars.index(i)}")
             else:continue
         self.chars=chars
+
     def __str__(self):return self.chars.__str__()
+
 class string(str): pass
 
 
@@ -218,7 +223,7 @@ class label(tk.Label):
 
     def hide(self): self.pack_forget()
 
-    def setText(self, text: str): self.config(text=text)
+    def setText(self, texts: str): self.config(text=texts)
 
     def setBackground(self, color: str): self.config(bg=color)
 
@@ -252,7 +257,7 @@ class text(tk.Text):
 
     def empty(self): self.delete(0, tk.END)
 
-    def addText(self, text: str): self.insert(0, text)
+    def addText(self, texts: str): self.insert(0, texts)
 
     def setBackground(self, color: str): self.config(bg=color)
 
@@ -260,26 +265,17 @@ class text(tk.Text):
 
 
 class app(tk.Tk):
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.controls = dict()
-
     def addControl(self, name, control):
         self.controls[name] = control
         return control
-
     def getControl(self, controlName):
-        try:
-            return self.controls[controlName]
-        except:
-            return None
-
-    def run(self):
-        self.mainloop()
-
-    def hide(self):
-        self.withdraw()
-
-    def show(self):
-        self.focus()
+        try:return self.controls[controlName]
+        except:return None
+    def resize(self,geometry:str):self.geometry(geometry)
+    def resizable(self,width:bool,height:bool):self.resizable(width,height)
+    def run(self):self.mainloop()
+    def hide(self):self.withdraw()
+    def show(self):self.focus()
