@@ -1,6 +1,18 @@
 ## Script Database
 
+ScriptDatabase is a databasing system that can do the following:
+- Take Student Name, grade, classes, grades 
+- Save this data to a database using ```sqlite3```
+- Retrieve and copy the data to clipboard 
 
+ScriptDatabase is built in full python and uses the following python modules:
+- Tkinter: The GUI module using TCL/TK Framework
+- re: Used for Regex in ```builtins.py``` to create char class(redefining built in data types)
+- Sqlite3: Used to read/write SQL databases to store students data.
+- time: Used in ```install.py``` to keep ```tkinter.ttk.Progressbar``` running.
+- os: Used in ```install.py``` top check if SQL database is existing.
+- ctypes: Used in ```install.py``` alongside ```sys``` to request administrator privileges
+- sys: Used in ```install.py``` alongside ```ctypes``` to request administrator privileges
 <!--
 ### Markdown
 
